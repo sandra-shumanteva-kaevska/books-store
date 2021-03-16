@@ -56,7 +56,7 @@ app.get('/books', async (req, res) => {
     if (req.query.hasOwnProperty('language')) {
         query.language_code = req.query.language
     }
-    const books = await Book.find(query).sort({ title: 'asc' })
+    const books = await Book.find(query).sort({ title: 'asc' }).slice(0, 10)
     res.json(books)
 })
 
